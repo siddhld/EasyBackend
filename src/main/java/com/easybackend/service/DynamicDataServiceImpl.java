@@ -32,7 +32,7 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @CacheEvict(value = {"dynamicDataDtoById", "dynamicDataDto"}, key = "#uniqueKey")
+    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey")
     public DynamicDataDto saveData(String uniqueKey, Map<String, Object> data) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Utility.validateData(data);   // Validation
@@ -94,7 +94,7 @@ public class DynamicDataServiceImpl implements DynamicDataService {
         return data.get().stream().map(DynamicDataDto::new).collect(Collectors.toList());
     }
 
-    @Cacheable(value = "dynamicDataDtoById", key = "#uniqueKey")
+    @Cacheable(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
     public DynamicDataDto getDataById(String uniqueKey, String id) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         System.err.println("Inside Get Data By Id ---------------- ");
@@ -108,7 +108,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @CacheEvict(value = {"dynamicDataDtoById", "dynamicDataDto"}, key = "#uniqueKey")
+    @Caching(
+            evict = {
+                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+            }
+    )
     public DynamicDataDto updateData(String uniqueKey, String id, Map<String, Object> data) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Utility.validateData(data);   // Validation
@@ -140,7 +145,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @CacheEvict(value = {"dynamicDataDtoById", "dynamicDataDto"}, key = "#uniqueKey")
+    @Caching(
+            evict = {
+                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+            }
+    )
     public DynamicDataDto patchUpdateData(String uniqueKey, String id, Map<String, Object> fields) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Utility.validateData(fields);   // Validation
@@ -170,7 +180,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @CacheEvict(value = {"dynamicDataDtoById", "dynamicDataDto"}, key = "#uniqueKey")
+    @Caching(
+            evict = {
+                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+            }
+    )
     public String deleteData(String uniqueKey, String id) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
 
@@ -193,7 +208,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @CacheEvict(value = {"dynamicDataDtoById", "dynamicDataDto"}, key = "#uniqueKey")
+    @Caching(
+            evict = {
+                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+            }
+    )
     public String deleteAllData(String uniqueKey) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Optional<EndpointData> endpointData = endpointDataRepo.findByUniqueKey(uniqueKey);
@@ -202,7 +222,7 @@ public class DynamicDataServiceImpl implements DynamicDataService {
         try {
             Integer result = repository.deleteAllByUniqueKey(uniqueKey);
 
-            if(result <= 0) {
+            if (result <= 0) {
                 throw new DataNotFoundException("No Data Found With The Provided Endpoint");
             }
         } catch (DataAccessException e) {

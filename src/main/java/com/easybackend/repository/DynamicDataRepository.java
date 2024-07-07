@@ -18,5 +18,4 @@ public interface DynamicDataRepository extends MongoRepository<DynamicData, Stri
     Optional<DynamicData> findByUniqueKeyAndDataId(String uniqueKey, String dataIdKey, String dataIdValue);
     Integer deleteAllByUniqueKey(String uniqueKey);
 
-
 }

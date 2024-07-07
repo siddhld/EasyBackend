@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(value = "*")
 @RequestMapping("/api")
 public class DynamicDataController {
     private final DynamicDataService service;
