@@ -32,7 +32,7 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey")
+//    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey")
     public DynamicDataDto saveData(String uniqueKey, Map<String, Object> data) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Utility.validateData(data);   // Validation
@@ -83,7 +83,7 @@ public class DynamicDataServiceImpl implements DynamicDataService {
         }
     }
 
-    @Cacheable(value = "dynamicDataDto", key = "#uniqueKey")
+//    @Cacheable(value = "dynamicDataDto", key = "#uniqueKey")
     public List<DynamicDataDto> getData(String uniqueKey) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         System.err.println("Inside Get Data ---------------- ");
@@ -94,7 +94,7 @@ public class DynamicDataServiceImpl implements DynamicDataService {
         return data.get().stream().map(DynamicDataDto::new).collect(Collectors.toList());
     }
 
-    @Cacheable(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+//    @Cacheable(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
     public DynamicDataDto getDataById(String uniqueKey, String id) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         System.err.println("Inside Get Data By Id ---------------- ");
@@ -108,12 +108,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @Caching(
-            evict = {
-                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
-                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
-            }
-    )
+//    @Caching(
+//            evict = {
+//                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+//                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+//            }
+//    )
     public DynamicDataDto updateData(String uniqueKey, String id, Map<String, Object> data) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Utility.validateData(data);   // Validation
@@ -145,12 +145,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @Caching(
-            evict = {
-                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
-                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
-            }
-    )
+//    @Caching(
+//            evict = {
+//                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+//                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+//            }
+//    )
     public DynamicDataDto patchUpdateData(String uniqueKey, String id, Map<String, Object> fields) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Utility.validateData(fields);   // Validation
@@ -180,12 +180,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @Caching(
-            evict = {
-                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
-                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
-            }
-    )
+//    @Caching(
+//            evict = {
+//                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+//                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+//            }
+//    )
     public String deleteData(String uniqueKey, String id) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
 
@@ -208,12 +208,12 @@ public class DynamicDataServiceImpl implements DynamicDataService {
     }
 
     @Transactional
-    @Caching(
-            evict = {
-                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
-                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
-            }
-    )
+//    @Caching(
+//            evict = {
+//                    @CacheEvict(value = {"dynamicDataDto"}, key = "#uniqueKey"),
+//                    @CacheEvict(value = "dynamicDataDtoById", key = "#uniqueKey + '-' + #id")
+//            }
+//    )
     public String deleteAllData(String uniqueKey) {
         Utility.validateUniqueKey(uniqueKey);   // Validation
         Optional<EndpointData> endpointData = endpointDataRepo.findByUniqueKey(uniqueKey);

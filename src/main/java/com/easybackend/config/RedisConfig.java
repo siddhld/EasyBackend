@@ -16,17 +16,17 @@ import java.time.Duration;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-    @Bean
-    public RedisCacheManager cacheManager(RedisConnectionFactory factory) {
-        RedisCacheManager.RedisCacheManagerBuilder builder = RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(factory);
-        builder.cacheDefaults(redisCacheConfiguration());
-        return builder.build();
-    }
-
-    private RedisCacheConfiguration redisCacheConfiguration() {
-        return RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMinutes(10)) // Set cache expiration time, for example, 10 minutes
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
-    }
+//    @Bean
+//    public RedisCacheManager cacheManager(RedisConnectionFactory factory) {
+//        RedisCacheManager.RedisCacheManagerBuilder builder = RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(factory);
+//        builder.cacheDefaults(redisCacheConfiguration());
+//        return builder.build();
+//    }
+//
+//    private RedisCacheConfiguration redisCacheConfiguration() {
+//        return RedisCacheConfiguration.defaultCacheConfig()
+//                .entryTtl(Duration.ofMinutes(10)) // Set cache expiration time, for example, 10 minutes
+//                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
+//                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
+//    }
 }
