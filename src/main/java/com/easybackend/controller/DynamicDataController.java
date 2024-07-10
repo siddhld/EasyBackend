@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(value = "*")
+@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("/api")
 public class DynamicDataController {
     private final DynamicDataService service;
