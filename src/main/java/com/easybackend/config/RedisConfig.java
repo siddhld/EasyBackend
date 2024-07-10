@@ -18,20 +18,11 @@ import java.time.Duration;
 public class RedisConfig {
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
-        String redisHost = System.getenv("SPRING_REDIS_HOST") != null ? System.getenv("SPRING_REDIS_HOST") : "localhost";
-        int redisPort = System.getenv("SPRING_REDIS_PORT") != null ? Integer.parseInt(System.getenv("SPRING_REDIS_PORT")) : 6379;
-        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(redisHost, redisPort);
-
-        LettuceConnectionFactory factory = new LettuceConnectionFactory(configuration);
-        factory.afterPropertiesSet();
-        try {
-            factory.getConnection();
-            System.out.println("Successfully connected to Redis");
-        } catch (Exception e) {
-            System.err.println("Failed to connect to Redis: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return factory;
+        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration();
+        configuration.setHostName(System.getenv("REDIS_HOST"));
+        configuration.setPort(Integer.parseInt(System.getenv("REDIS_PORT")));
+        configuration.setPassword(System.getenv("REDIS_PASSWORD"));
+        return new LettuceConnectionFactory(configuration);
     }
 
     @Bean
