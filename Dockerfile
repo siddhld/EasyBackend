@@ -1,10 +1,10 @@
 FROM maven:3.8.3-openjdk-17 AS build
 COPY . .
 RUN mvn clean package -DskipTests
-# Run stage
-FROM openjdk:17-jdk-slim
-WORKDIR /app
-COPY --from=build /app/target/easybackend-0.0.1-SNAPSHOT.jar app.jar
+
+FROM openjdk:17.0.1-jdk-slim
+
+COPY --from=build /target/easybackend-0.0.1-SNAPSHOT.jar easybackend.jar
 EXPOSE 9999
 
 ENV MONGODB_URI=mongodb+srv://admin:admin%403%24@easy-backend.wezdv6j.mongodb.net/?retryWrites\\=true&w\\=majority
