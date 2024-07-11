@@ -31,7 +31,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataAccessException.class)
     public ResponseEntity<ErrorResponse> handleDataAccessException(DataAccessException ex) {
-        String message = "Internal server error. Please try again later.";
+        System.err.println(ex.getMessage());
+        ex.printStackTrace();
+        String message = ex.getMessage() + " Please try again later.";
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         int code = HttpStatus.INTERNAL_SERVER_ERROR.value();
 

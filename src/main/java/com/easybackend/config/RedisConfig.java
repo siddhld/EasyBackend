@@ -1,5 +1,6 @@
 package com.easybackend.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -16,22 +17,25 @@ import java.time.Duration;
 
 @Configuration
 public class RedisConfig {
-    @Bean
-    public LettuceConnectionFactory redisConnectionFactory() {
-        String redisHost = System.getenv("SPRING_REDIS_HOST") != null ? System.getenv("SPRING_REDIS_HOST") : "localhost";
-        int redisPort = System.getenv("SPRING_REDIS_PORT") != null ? Integer.parseInt(System.getenv("SPRING_REDIS_PORT")) : 6379;
-        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(redisHost, redisPort);
 
-        LettuceConnectionFactory factory = new LettuceConnectionFactory(configuration);
-        factory.afterPropertiesSet();
+    // (Layman's term)
+    // The below method is used to create a "Key" that will open the Redis door, So that we can interact with Redis.
+    @Bean
+    public LettuceConnectionFactory redisConnectionFactory(
+            @Value("${spring.redis.host}") String host,
+            @Value("${spring.redis.port}") int port,
+            @Value("${spring.redis.password}") String password) {
+        LettuceConnectionFactory lf = null;
         try {
-            factory.getConnection();
-            System.out.println("Successfully connected to Redis");
-        } catch (Exception e) {
-            System.err.println("Failed to connect to Redis: " + e.getMessage());
-            e.printStackTrace();
+            RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration(host, port);
+            redisConfig.setPassword(password);
+            lf = new LettuceConnectionFactory(redisConfig);
+            System.err.println("Successfully connected to REDIS");
+        }catch (Exception ex){
+            System.err.println("Failed to connect to REDIS: " + ex.getMessage());
+            ex.printStackTrace();
         }
-        return factory;
+        return lf;
     }
 
     @Bean
