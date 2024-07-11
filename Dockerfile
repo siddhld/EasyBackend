@@ -12,4 +12,4 @@ ENV REDIS_HOST=redis-15241.c264.ap-south-1-1.ec2.redns.redis-cloud.com
 ENV REDIS_PASSWORD=DvitSeB2aw3ydjqMdx7mxAQBmp5PF9Nq
 ENV REDIS_PORT=15241
 
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","easybackend.jar"]
