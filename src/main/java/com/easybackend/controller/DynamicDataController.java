@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(origins = "https://easybackend-frontend.vercel.app/")
 @RequestMapping("/api")
 public class DynamicDataController {
     private final DynamicDataService service;
