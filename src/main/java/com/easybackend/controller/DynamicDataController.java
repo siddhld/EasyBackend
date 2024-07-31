@@ -63,6 +63,7 @@ public class DynamicDataController {
 
     @GetMapping("/generateUniqueKey")
     public String generateUniqueKey() {
+        System.err.println("Inside Generate Unique Key ---------------- ");
         return service.generateUniqueKey();
     }
 
