@@ -20,9 +20,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.easybackend.model.DynamicData;
-import com.easybackend.model.DynamicDataDto;
-import com.easybackend.model.EndpointData;
+import com.easybackend.entity.DynamicData;
+import com.easybackend.entity.DynamicDataDto;
+import com.easybackend.entity.EndpointData;
 import com.easybackend.repository.DynamicDataRepository;
 import com.easybackend.repository.EndpointDataRepository;
 import com.easybackend.service.DynamicDataServiceImpl;

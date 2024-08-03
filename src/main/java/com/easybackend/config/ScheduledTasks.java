@@ -1,6 +1,6 @@
 package com.easybackend.config;
 
-import com.easybackend.model.DynamicData;
+import com.easybackend.entity.DynamicData;
 import com.easybackend.repository.DynamicDataRepository;
 import com.easybackend.service.DynamicDataService;
 import org.springframework.beans.factory.annotation.Autowired;

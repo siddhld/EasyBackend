@@ -1,8 +1,8 @@
 package com.easybackend.test;
 
 import com.easybackend.controller.DynamicDataController;
-import com.easybackend.model.DynamicDataDto;
-import com.easybackend.model.EndpointData;
+import com.easybackend.entity.DynamicDataDto;
+import com.easybackend.entity.EndpointData;
 import com.easybackend.service.DynamicDataService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.easybackend.service;
 
-import com.easybackend.model.DynamicDataDto;
-import com.easybackend.model.EndpointData;
+import com.easybackend.entity.DynamicDataDto;
+import com.easybackend.entity.EndpointData;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;

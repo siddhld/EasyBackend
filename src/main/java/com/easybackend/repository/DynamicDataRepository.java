@@ -1,6 +1,6 @@
 package com.easybackend.repository;
 
-import com.easybackend.model.DynamicData;
+import com.easybackend.entity.DynamicData;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

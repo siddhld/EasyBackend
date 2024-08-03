@@ -1,4 +1,4 @@
-package com.easybackend.model;
+package com.easybackend.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

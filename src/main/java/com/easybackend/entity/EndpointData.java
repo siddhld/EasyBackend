@@ -1,4 +1,4 @@
-package com.easybackend.model;
+package com.easybackend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

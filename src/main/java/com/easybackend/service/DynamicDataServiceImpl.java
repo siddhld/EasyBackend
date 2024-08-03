@@ -1,9 +1,9 @@
 package com.easybackend.service;
 
 import com.easybackend.exception.DataNotFoundException;
-import com.easybackend.model.DynamicData;
-import com.easybackend.model.DynamicDataDto;
-import com.easybackend.model.EndpointData;
+import com.easybackend.entity.DynamicData;
+import com.easybackend.entity.DynamicDataDto;
+import com.easybackend.entity.EndpointData;
 import com.easybackend.repository.DynamicDataRepository;
 import com.easybackend.repository.EndpointDataRepository;
 import com.easybackend.utils.Utility;

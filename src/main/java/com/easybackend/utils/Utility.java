@@ -1,8 +1,8 @@
 package com.easybackend.utils;
 
 import com.easybackend.exception.DataNotFoundException;
-import com.easybackend.model.DynamicData;
-import com.easybackend.model.EndpointData;
+import com.easybackend.entity.DynamicData;
+import com.easybackend.entity.EndpointData;
 
 import java.security.SecureRandom;
 import java.util.List;

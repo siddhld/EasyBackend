@@ -1,4 +1,4 @@
-package com.easybackend.model;
+package com.easybackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
