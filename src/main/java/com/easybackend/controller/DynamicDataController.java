@@ -18,8 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "*")
-@RequestMapping("/api")
+@CrossOrigin(origins = "https://easybackend.in")
 public class DynamicDataController {
     private final DynamicDataService service;
     private final ObjectMapper objectMapper;
