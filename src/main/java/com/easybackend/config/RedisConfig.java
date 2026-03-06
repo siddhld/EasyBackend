@@ -36,7 +36,6 @@ public class RedisConfig {
             // IMPORTANT: Enable SSL for Redis Cloud
             LettuceClientConfiguration clientConfig =
                     LettuceClientConfiguration.builder()
-                            .useSsl()
                             .build();
 
             LettuceConnectionFactory factory =
