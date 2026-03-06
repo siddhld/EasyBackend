@@ -14,7 +14,6 @@ EasyBackend is a Backend-as-a-Service (BaaS) that lets you create fully function
 
 > **Live URL:** [https://easybackend-3zbr.onrender.com](https://easybackend-3zbr.onrender.com)
 >
-> **Frontend:** [https://easybackend.in](https://easybackend.in)
 
 ---
 
