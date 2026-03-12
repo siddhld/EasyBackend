@@ -118,6 +118,11 @@ public class DynamicDataController {
         return service.generateUniqueKey();
     }
 
+    @GetMapping("/health")
+    public String health() {
+       return "OK";
+    }
+    
     private Map<String, Object> parseJsonData(String jsonBody) {
         if (jsonBody == null || jsonBody.isEmpty()) {
             return new HashMap<>();
